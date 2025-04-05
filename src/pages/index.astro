@@ -3,17 +3,36 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-<section class="relative h-[80vh] overflow-hidden">
-  <!-- Coach Image -->
-  <img 
-    src="/photo.jpg" 
-    alt="Coach" 
-    class="absolute top-0 left-0 w-full h-full object-cover z-0"
-  />
+  <!-- Hero Section with Coach Image -->
+  <section class="relative h-[80vh] overflow-hidden">
+    <img 
+      src="/photo.jpg" 
+      alt="Coach" 
+      class="absolute top-0 left-0 w-full h-full object-cover z-0"
+    />
+    <div class="relative z-10 flex flex-col items-center justify-center h-full bg-black/40 text-white text-center px-4">
+      <h1 class="text-5xl font-bold font-serif">WKB Gym</h1>
+    </div>
+  </section>
 
-  <!-- Overlay Text -->
-  <div class="relative z-10 flex flex-col items-center justify-center h-full bg-black/40 text-white text-center px-4">
-    <h1 class="text-5xl font-bold font-serif">WKB Gym</h1>
-  </div>
-</section>
+  <!-- Bottom Section: Description + Location + Chatbot Button -->
+  <section class="bg-[#fdfaf3] text-black py-10">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6">
+      <!-- Left Side: Description + Location -->
+      <div>
+        <h2 class="text-2xl font-bold font-serif mb-2">About the Gym</h2>
+        <p class="mb-4 text-lg">
+          We train teenagers and adults in MMA, Kickboxing, and Kyokushin Karate. Our coach is experienced and battle-tested. Whether you're new or seasoned, this is where discipline meets strength.
+        </p>
+        <p class="text-base font-semibold">📍 The One Oasis Gym, 3rd floor, BF Homes</p>
+      </div>
+
+      <!-- Right Side: Chatbot Button -->
+      <div class="flex justify-end items-end">
+        <a href="#chat" class="bg-black text-white font-semibold px-6 py-3 rounded-2xl shadow-lg hover:bg-gray-800 transition">
+          💬 Chat with Assistant
+        </a>
+      </div>
+    </div>
+  </section>
 </Layout>
