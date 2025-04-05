@@ -34,7 +34,14 @@ import Layout from '../layouts/Layout.astro';
   <div class="max-w-7xl mx-auto px-4">
     <h2 class="text-3xl font-bold font-serif mb-8 text-center">🗓 Weekly Class Schedule</h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6 text-sm">
+<!-- Schedule scroll wrapper starts -->
+
+    <div class="overflow-x-auto">
+
+      <!-- 7-day grid layout -->
+
+  <div class="min-w-[900px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6 text-sm">
+
       <!-- SUNDAY -->
       <div>
         <h3 class="font-bold mb-2 text-center">Sunday</h3>
@@ -46,9 +53,11 @@ import Layout from '../layouts/Layout.astro';
           <div class="p-3 border rounded shadow">
             <p class="text-red-600 font-semibold">7:45pm – 9:45pm • Kyokushin Karate (High Belts)</p>
             <p>Sensei Vadim Budnikov</p>
-          </div>
+          </div> 
         </div>
-      </div>
+      </div>       <!-- end of sunday -->
+
+      <!-- repeat for each day  -->
 
       <!-- MONDAY -->
       <div>
@@ -176,8 +185,8 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-    </div>
-  </div>
+    </div>       <!-- end of 7 day  -->
+  </div>         <!-- end of scroll -->
 </section>
 
 
