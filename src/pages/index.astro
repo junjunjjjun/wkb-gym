@@ -6,39 +6,32 @@ import Layout from '../layouts/Layout.astro';
   <!-- Hero Section with Parallax Background -->
 <section class="relative h-screen overflow-hidden">
   <!-- Parallax Background -->
-  <div 
-    class="absolute inset-0 bg-center bg-cover bg-fixed"
-    style="background-image: url('/photo.jpg');"
-  ></div>
-
-  <!-- Dark Overlay -->
-  <div class="absolute inset-0 bg-black/50 z-10"></div>
-
-    <!-- Hero Text with Scroll-Off Animation -->
-  <div 
-    class="relative z-20 flex flex-col items-center justify-center h-full text-white text-center px-4 will-change-transform"
-    x-data="{ scrolled: false }"
-    x-init="window.addEventListener('scroll', () => {
-      scrolled = window.scrollY > window.innerHeight * 0.8;
-    })"
-    :class="{ 'scroll-out': scrolled }"
+ <!-- Hero Text with Parallax-Like Scroll Movement -->
+<div 
+  class="relative z-20 flex flex-col items-center justify-center h-full text-white text-center px-4 will-change-transform"
+  x-data="{ y: 0 }"
+  x-init="window.addEventListener('scroll', () => {
+    y = window.scrollY;
+  })"
+  :style="'transform: translateY(' + Math.min(y * 0.3, 60) + 'px); opacity: ' + (1 - Math.min(y / 600, 1));"
+>
+  <!-- Main Title -->
+  <h1 
+    class="text-5xl font-bold text-white"
+    style="font-family: 'Times New Roman', serif;"
   >
-    <!-- Main Title -->
-    <h1 
-      class="text-5xl font-bold text-white" 
-      style="font-family: 'Times New Roman', serif;"
-    >
-      WKB Gym
-    </h1>
+    WKB Gym
+  </h1>
 
-    <!-- Subtitle -->
-    <p 
-      class="mt-4 text-white text-sm md:text-lg font-semibold"
-      style="font-family: 'Times New Roman', serif; letter-spacing: 0.075em; word-spacing: 0.3em;"
-    >
-      Kyokushin Karate / Kickboxing / MMA
-    </p>
-  </div>
+  <!-- Subtitle -->
+  <p 
+    class="mt-4 text-white text-sm md:text-lg font-semibold"
+    style="font-family: 'Times New Roman', serif; letter-spacing: 0.075em; word-spacing: 0.3em;"
+  >
+    Kyokushin Karate / Kickboxing / MMA
+  </p>
+</div>
+
 
 </section>
 
