@@ -209,6 +209,22 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
 </Layout>
+<style>
+  @keyframes slideOffRight {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(150%);
+      opacity: 0;
+    }
+  }
+
+  .slide-out-right {
+    animation: slideOffRight 1.2s ease-out forwards;
+  }
+</style>
 
 <!-- Floating Chatbot Button -->
 <a href="#chat" 
