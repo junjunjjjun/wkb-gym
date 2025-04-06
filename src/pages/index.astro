@@ -4,9 +4,9 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout>
 
-  <!-- Hero Section with Parallax Background and Animated Text -->
-  <section class="relative h-screen overflow-hidden">
-  <!-- Parallax Background -->
+ <!-- Hero Section with Parallax Background and Slide-Out Animation -->
+<section class="relative h-screen overflow-hidden">
+  <!-- Background Image -->
   <div 
     class="absolute inset-0 bg-center bg-cover bg-fixed"
     style="background-image: url('/photo.jpg');"
@@ -15,20 +15,23 @@ import Layout from '../layouts/Layout.astro';
   <!-- Dark Overlay -->
   <div class="absolute inset-0 bg-black/50 z-10"></div>
 
-  <!-- Animated Hero Text with slide-off effect -->
+  <!-- Animated Hero Text -->
   <div 
-    class="relative z-20 flex flex-col items-center justify-center h-full text-white text-center px-4 will-change-transform"
-    x-data="{ scrolledAway: false, y: 0 }"
+    class="relative z-20 flex flex-col items-center justify-center h-full text-white text-center px-4 will-change-transform transition-transform duration-300 ease-out"
+    x-data="{ scrolled: false, scrollY: 0 }"
     x-init="
       window.addEventListener('scroll', () => {
-        y = window.scrollY;
-        scrolledAway = y > window.innerHeight * 0.8;
+        scrollY = window.scrollY;
+        scrolled = scrollY > window.innerHeight * 0.7;
       });
     "
-    :class="{ 'slide-out-right': scrolledAway }"
-    :style="'transform: translateY(' + Math.min(y * 0.3, 60) + 'px);'"
+    :class="{ 'slide-off-right': scrolled }"
+    :style="'transform: translateY(' + Math.min(scrollY * 0.2, 60) + 'px)'"
   >
-    <h1 class="text-5xl font-bold text-white" style="font-family: 'Times New Roman', serif;">
+    <h1 
+      class="text-5xl font-bold text-white" 
+      style="font-family: 'Times New Roman', serif;"
+    >
       WKB Gym
     </h1>
     <p 
@@ -39,6 +42,7 @@ import Layout from '../layouts/Layout.astro';
     </p>
   </div>
 </section>
+
 
 
   <!-- About Section -->
@@ -210,20 +214,21 @@ import Layout from '../layouts/Layout.astro';
 
 </Layout>
 <style>
-  @keyframes slideOffRight {
-    from {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    to {
-      transform: translateX(150%);
-      opacity: 0;
-    }
+@keyframes slideOffRight {
+  0% {
+    transform: translateY(60px) translateX(0);
+    opacity: 1;
   }
+  100% {
+    transform: translateY(60px) translateX(150%);
+    opacity: 0;
+  }
+}
 
-  .slide-out-right {
-    animation: slideOffRight 1.2s ease-out forwards;
-  }
+.slide-off-right {
+  animation: slideOffRight 1.2s ease-out forwards;
+}
+
 </style>
 
 <!-- Floating Chatbot Button -->
