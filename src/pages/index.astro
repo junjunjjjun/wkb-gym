@@ -5,6 +5,17 @@ import Layout from '../layouts/Layout.astro';
 <Layout>
   <!-- Hero Section with Coach Image -->
   <section class="relative h-[80vh] overflow-hidden">
+  <div 
+    class="absolute top-0 left-0 w-full h-full bg-fixed bg-center bg-cover z-0"
+    style="background-image: url('/photo.jpg');"
+  ></div>
+
+  <!-- Overlay Text -->
+  <div class="relative z-10 flex flex-col items-center justify-center h-full bg-black/40 text-white text-center px-4">
+    <h1 class="text-5xl font-bold font-serif">WKB Gym</h1>
+  </div>
+</section>
+
     <img 
       src="/photo.jpg" 
       alt="Coach" 
