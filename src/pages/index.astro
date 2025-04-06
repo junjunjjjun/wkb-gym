@@ -3,51 +3,46 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-  <!-- Hero Section with Parallax Background -->
-<section class="relative h-screen overflow-hidden">
-<!-- Parallax Background -->
-<div 
-  class="absolute inset-0 bg-center bg-cover bg-fixed"
-  style="background-image: url('/photo.jpg');"
-></div>
 
-<!-- Dark Overlay -->
-<div class="absolute inset-0 bg-black/50 z-10"></div>
+  <!-- Hero Section with Parallax Background and Animated Text -->
+  <section class="relative h-screen overflow-hidden">
+    <!-- Background Image -->
+    <div 
+      class="absolute inset-0 bg-center bg-cover bg-fixed"
+      style="background-image: url('/photo.jpg');"
+    ></div>
 
-  <!-- Parallax Background -->
- <!-- Hero Text with Parallax-Like Scroll Movement -->
-<div 
-  class="relative z-20 flex flex-col items-center justify-center h-full text-white text-center px-4 will-change-transform"
-  x-data="{ y: 0 }"
-  x-init="window.addEventListener('scroll', () => {
-    y = window.scrollY;
-  })"
-  :style="'transform: translateY(' + Math.min(y * 0.3, 60) + 'px); opacity: ' + (1 - Math.min(y / 600, 1));"
->
-  <!-- Main Title -->
-  <h1 
-    class="text-5xl font-bold text-white"
-    style="font-family: 'Times New Roman', serif;"
-  >
-    WKB Gym
-  </h1>
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-black/50 z-10"></div>
 
-  <!-- Subtitle -->
-  <p 
-    class="mt-4 text-white text-sm md:text-lg font-semibold"
-    style="font-family: 'Times New Roman', serif; letter-spacing: 0.075em; word-spacing: 0.3em;"
-  >
-    Kyokushin Karate / Kickboxing / MMA
-  </p>
-</div>
+    <!-- Animated Hero Text -->
+    <div 
+      class="relative z-20 flex flex-col items-center justify-center h-full text-white text-center px-4 will-change-transform"
+      x-data="{ y: 0 }"
+      x-init="window.addEventListener('scroll', () => {
+        y = window.scrollY;
+      })"
+      :style="`
+        transform: translateY(${Math.min(y * 0.3, 60)}px);
+        opacity: ${1 - Math.min(y / 400, 1)};
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+      `"
+    >
+      <h1 class="text-5xl font-bold text-white" style="font-family: 'Times New Roman', serif;">
+        WKB Gym
+      </h1>
+      <p 
+        class="mt-4 text-white text-sm md:text-lg font-semibold"
+        style="font-family: 'Times New Roman', serif; letter-spacing: 0.075em; word-spacing: 0.3em;"
+      >
+        Kyokushin Karate / Kickboxing / MMA
+      </p>
+    </div>
+  </section>
 
-
-</section>
-
-  <!-- Bottom Section: Description + Location + Chatbot Button -->
+  <!-- About Section -->
   <section class="bg-[#fdfaf3] text-black py-10">
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6">
-      <!-- Left Side: Description + Location -->
       <div>
         <h2 class="text-2xl font-bold font-serif mb-2">About the Gym</h2>
         <p class="mb-4 text-lg">
@@ -58,190 +53,164 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-<!-- Weekly Schedule Grid -->
-<section class="bg-white text-black py-10">
-  <div class="max-w-7xl mx-auto px-4">
-    <h2 class="text-3xl font-bold font-serif mb-8 text-center">🗓 Weekly Class Schedule</h2>
+  <!-- Weekly Class Schedule -->
+  <section class="bg-white text-black py-10">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold font-serif mb-8 text-center">🗓 Weekly Class Schedule</h2>
 
-<!-- Schedule scroll wrapper starts -->
+      <div class="overflow-x-auto">
+        <div class="min-w-[900px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6 text-sm">
 
-    <div class="overflow-x-auto">
+          <!-- SUNDAY -->
+          <div>
+            <h3 class="font-bold mb-2 text-center">Sunday</h3>
+            <div class="space-y-3">
+              <div class="p-3 border rounded shadow">
+                <p class="text-purple-600 font-semibold">10:30am – 11:30am • Kickboxing</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+              <div class="p-3 border rounded shadow">
+                <p class="text-red-600 font-semibold">7:45pm – 9:45pm • Kyokushin Karate (High Belts)</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+            </div>
+          </div>
 
-      <!-- 7-day grid layout -->
+          <!-- MONDAY -->
+          <div>
+            <h3 class="font-bold mb-2 text-center">Monday</h3>
+            <div class="space-y-3">
+              <div class="p-3 border rounded shadow">
+                <p class="text-red-600 font-semibold">4:00pm – 6:00pm • Kyokushin Karate (Cuenca Court)</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+              <div class="p-3 border rounded shadow">
+                <p class="text-purple-600 font-semibold">6:30pm – 7:30pm • Kickboxing</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+              <div class="p-3 border rounded shadow">
+                <p class="text-red-600 font-semibold">7:45pm – 9:45pm • Kyokushin Karate (High Belts)</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+            </div>
+          </div>
 
-  <div class="min-w-[900px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6 text-sm">
+          <!-- TUESDAY -->
+          <div>
+            <h3 class="font-bold mb-2 text-center">Tuesday</h3>
+            <div class="space-y-3">
+              <div class="p-3 border rounded shadow">
+                <p class="text-red-600 font-semibold">4:00pm – 6:00pm • Kyokushin Karate</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+              <div class="p-3 border rounded shadow">
+                <p class="text-blue-600 font-semibold">6:00pm – 7:30pm • MMA</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+              <div class="p-3 border rounded shadow">
+                <p class="text-purple-600 font-semibold">7:30pm – 9:00pm • Kickboxing</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+            </div>
+          </div>
 
-      <!-- SUNDAY -->
-      <div>
-        <h3 class="font-bold mb-2 text-center">Sunday</h3>
-        <div class="space-y-3">
-          <div class="p-3 border rounded shadow">
-            <p class="text-purple-600 font-semibold">10:30am – 11:30am • Kickboxing</p>
-            <p>Sensei Vadim Budnikov</p>
+          <!-- WEDNESDAY -->
+          <div>
+            <h3 class="font-bold mb-2 text-center">Wednesday</h3>
+            <div class="space-y-3">
+              <div class="p-3 border rounded shadow">
+                <p class="text-purple-600 font-semibold">10:30am – 11:30am • Kickboxing</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+              <div class="p-3 border rounded shadow">
+                <p class="text-orange-500 font-semibold">4:00pm – 5:15pm • Kickboxing for Kids</p>
+                <p>Kru Jacob Garay</p>
+              </div>
+              <div class="p-3 border rounded shadow">
+                <p class="text-red-600 font-semibold">4:00pm – 6:00pm • Kyokushin Karate (Basilan Hall)</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+              <div class="p-3 border rounded shadow">
+                <p class="text-purple-600 font-semibold">6:30pm – 7:30pm • Kickboxing</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+            </div>
           </div>
-          <div class="p-3 border rounded shadow">
-            <p class="text-red-600 font-semibold">7:45pm – 9:45pm • Kyokushin Karate (High Belts)</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div> 
-        </div>
-      </div>       <!-- end of sunday -->
 
-      <!-- repeat for each day  -->
+          <!-- THURSDAY -->
+          <div>
+            <h3 class="font-bold mb-2 text-center">Thursday</h3>
+            <div class="space-y-3">
+              <div class="p-3 border rounded shadow">
+                <p class="text-red-600 font-semibold">4:00pm – 6:00pm • Kyokushin Karate</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+              <div class="p-3 border rounded shadow">
+                <p class="text-blue-600 font-semibold">6:00pm – 7:30pm • MMA</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+              <div class="p-3 border rounded shadow">
+                <p class="text-purple-600 font-semibold">7:30pm – 9:00pm • Kickboxing</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+            </div>
+          </div>
 
-      <!-- MONDAY -->
-      <div>
-        <h3 class="font-bold mb-2 text-center">Monday</h3>
-        <div class="space-y-3">
-          <div class="p-3 border rounded shadow">
-            <p class="text-red-600 font-semibold">4:00pm – 6:00pm • Kyokushin Karate (Cuenca Court)</p>
-            <p>Sensei Vadim Budnikov</p>
+          <!-- FRIDAY -->
+          <div>
+            <h3 class="font-bold mb-2 text-center">Friday</h3>
+            <div class="space-y-3">
+              <div class="p-3 border rounded shadow">
+                <p class="text-purple-600 font-semibold">10:30am – 11:30am • Kickboxing</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+              <div class="p-3 border rounded shadow">
+                <p class="text-orange-500 font-semibold">4:00pm – 5:15pm • Kickboxing for Kids</p>
+                <p>Kru Jacob Garay</p>
+              </div>
+              <div class="p-3 border rounded shadow">
+                <p class="text-red-600 font-semibold">4:00pm – 6:00pm • Kyokushin Karate (Cuenca Football Field)</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+              <div class="p-3 border rounded shadow">
+                <p class="text-purple-600 font-semibold">6:30pm – 7:30pm • Kickboxing</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+              <div class="p-3 border rounded shadow">
+                <p class="text-red-600 font-semibold">7:45pm – 9:45pm • Kyokushin Karate (High Belts)</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+            </div>
           </div>
-          <div class="p-3 border rounded shadow">
-            <p class="text-purple-600 font-semibold">6:30pm – 7:30pm • Kickboxing</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div>
-          <div class="p-3 border rounded shadow">
-            <p class="text-red-600 font-semibold">7:45pm – 9:45pm • Kyokushin Karate (High Belts)</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div>
-        </div>
-      </div>
 
-      <!-- TUESDAY -->
-      <div>
-        <h3 class="font-bold mb-2 text-center">Tuesday</h3>
-        <div class="space-y-3">
-          <div class="p-3 border rounded shadow">
-            <p class="text-red-600 font-semibold">4:00pm – 6:00pm • Kyokushin Karate</p>
-            <p>Sensei Vadim Budnikov</p>
+          <!-- SATURDAY -->
+          <div>
+            <h3 class="font-bold mb-2 text-center">Saturday</h3>
+            <div class="space-y-3">
+              <div class="p-3 border rounded shadow">
+                <p class="text-red-600 font-semibold">4:00pm – 6:00pm • Kyokushin Karate</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+              <div class="p-3 border rounded shadow">
+                <p class="text-blue-600 font-semibold">6:00pm – 7:30pm • MMA</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+              <div class="p-3 border rounded shadow">
+                <p class="text-purple-600 font-semibold">7:30pm – 9:00pm • Kickboxing</p>
+                <p>Sensei Vadim Budnikov</p>
+              </div>
+            </div>
           </div>
-          <div class="p-3 border rounded shadow">
-            <p class="text-blue-600 font-semibold">6:00pm – 7:30pm • MMA</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div>
-          <div class="p-3 border rounded shadow">
-            <p class="text-purple-600 font-semibold">7:30pm – 9:00pm • Kickboxing</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div>
-        </div>
-      </div>
 
-      <!-- WEDNESDAY -->
-      <div>
-        <h3 class="font-bold mb-2 text-center">Wednesday</h3>
-        <div class="space-y-3">
-          <div class="p-3 border rounded shadow">
-            <p class="text-purple-600 font-semibold">10:30am – 11:30am • Kickboxing</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div>
-          <div class="p-3 border rounded shadow">
-            <p class="text-orange-500 font-semibold">4:00pm – 5:15pm • Kickboxing for Kids</p>
-            <p>Kru Jacob Garay</p>
-          </div>
-          <div class="p-3 border rounded shadow">
-            <p class="text-red-600 font-semibold">4:00pm – 6:00pm • Kyokushin Karate (Basilan Hall)</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div>
-          <div class="p-3 border rounded shadow">
-            <p class="text-purple-600 font-semibold">6:30pm – 7:30pm • Kickboxing</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- THURSDAY -->
-      <div>
-        <h3 class="font-bold mb-2 text-center">Thursday</h3>
-        <div class="space-y-3">
-          <div class="p-3 border rounded shadow">
-            <p class="text-red-600 font-semibold">4:00pm – 6:00pm • Kyokushin Karate</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div>
-          <div class="p-3 border rounded shadow">
-            <p class="text-blue-600 font-semibold">6:00pm – 7:30pm • MMA</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div>
-          <div class="p-3 border rounded shadow">
-            <p class="text-purple-600 font-semibold">7:30pm – 9:00pm • Kickboxing</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- FRIDAY -->
-      <div>
-        <h3 class="font-bold mb-2 text-center">Friday</h3>
-        <div class="space-y-3">
-          <div class="p-3 border rounded shadow">
-            <p class="text-purple-600 font-semibold">10:30am – 11:30am • Kickboxing</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div>
-          <div class="p-3 border rounded shadow">
-            <p class="text-orange-500 font-semibold">4:00pm – 5:15pm • Kickboxing for Kids</p>
-            <p>Kru Jacob Garay</p>
-          </div>
-          <div class="p-3 border rounded shadow">
-            <p class="text-red-600 font-semibold">4:00pm – 6:00pm • Kyokushin Karate (Cuenca Football Field)</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div>
-          <div class="p-3 border rounded shadow">
-            <p class="text-purple-600 font-semibold">6:30pm – 7:30pm • Kickboxing</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div>
-          <div class="p-3 border rounded shadow">
-            <p class="text-red-600 font-semibold">7:45pm – 9:45pm • Kyokushin Karate (High Belts)</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- SATURDAY -->
-      <div>
-        <h3 class="font-bold mb-2 text-center">Saturday</h3>
-        <div class="space-y-3">
-          <div class="p-3 border rounded shadow">
-            <p class="text-red-600 font-semibold">4:00pm – 6:00pm • Kyokushin Karate</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div>
-          <div class="p-3 border rounded shadow">
-            <p class="text-blue-600 font-semibold">6:00pm – 7:30pm • MMA</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div>
-          <div class="p-3 border rounded shadow">
-            <p class="text-purple-600 font-semibold">7:30pm – 9:00pm • Kickboxing</p>
-            <p>Sensei Vadim Budnikov</p>
-          </div>
         </div>
       </div>
-
-    </div>       <!-- end of 7 day  -->
-  </div>         <!-- end of scroll -->
-</section>
-
+    </div>
+  </section>
 
 </Layout>
+
 <!-- Floating Chatbot Button -->
 <a href="#chat" 
   class="fixed bottom-6 right-6 z-50 bg-black text-white font-semibold px-5 py-3 rounded-full shadow-xl hover:bg-gray-800 transition duration-300">
   💬 Chat with Assistant
 </a>
-<style>
-  /* Slide text to the right and fade out */
-  @keyframes slideOffRight {
-    0% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(150%);
-      opacity: 0;
-    }
-  }
-
-  /* Smooth slide-out animation (currently unused, can delete if not needed) */
-  .scroll-out {
-    animation: slideOffRight 1.2s ease-out forwards;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
-</style>
-
