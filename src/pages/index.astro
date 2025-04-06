@@ -3,18 +3,18 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-  <!-- Hero Section with Coach Image -->
-  <section class="relative h-[80vh] overflow-hidden">
-  <!-- Background Parallax -->
+  <!-- Hero Section with Parallax Background -->
+<section class="relative h-screen overflow-hidden">
+  <!-- Parallax Background -->
   <div 
-    class="absolute inset-0 bg-fixed bg-center bg-cover"
+    class="absolute inset-0 bg-center bg-cover bg-fixed"
     style="background-image: url('/photo.jpg');"
   ></div>
 
   <!-- Dark Overlay -->
   <div class="absolute inset-0 bg-black/50 z-10"></div>
 
-  <!-- Overlay Content -->
+  <!-- Text Overlay -->
   <div class="relative z-20 flex flex-col items-center justify-center h-full text-white text-center px-4">
     <h1 class="text-5xl font-bold font-serif">WKB Gym</h1>
   </div>
