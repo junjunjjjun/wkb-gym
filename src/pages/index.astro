@@ -6,39 +6,40 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- Hero Section with Parallax Background and Animated Text -->
   <section class="relative h-screen overflow-hidden">
-    <!-- Background Image -->
-    <div 
-      class="absolute inset-0 bg-center bg-cover bg-fixed"
-      style="background-image: url('/photo.jpg');"
-    ></div>
+  <!-- Parallax Background -->
+  <div 
+    class="absolute inset-0 bg-center bg-cover bg-fixed"
+    style="background-image: url('/photo.jpg');"
+  ></div>
 
-    <!-- Dark Overlay -->
-    <div class="absolute inset-0 bg-black/50 z-10"></div>
+  <!-- Dark Overlay -->
+  <div class="absolute inset-0 bg-black/50 z-10"></div>
 
-    <!-- Animated Hero Text -->
-    <div 
-      class="relative z-20 flex flex-col items-center justify-center h-full text-white text-center px-4 will-change-transform"
-      x-data="{ y: 0 }"
-      x-init="window.addEventListener('scroll', () => {
+  <!-- Animated Hero Text with slide-off effect -->
+  <div 
+    class="relative z-20 flex flex-col items-center justify-center h-full text-white text-center px-4 will-change-transform"
+    x-data="{ scrolledAway: false, y: 0 }"
+    x-init="
+      window.addEventListener('scroll', () => {
         y = window.scrollY;
-      })"
-      :style="`
-        transform: translateY(${Math.min(y * 0.3, 60)}px);
-        opacity: ${1 - Math.min(y / 400, 1)};
-        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-      `"
+        scrolledAway = y > window.innerHeight * 0.8;
+      });
+    "
+    :class="{ 'slide-out-right': scrolledAway }"
+    :style="'transform: translateY(' + Math.min(y * 0.3, 60) + 'px);'"
+  >
+    <h1 class="text-5xl font-bold text-white" style="font-family: 'Times New Roman', serif;">
+      WKB Gym
+    </h1>
+    <p 
+      class="mt-4 text-white text-sm md:text-lg font-semibold"
+      style="font-family: 'Times New Roman', serif; letter-spacing: 0.075em; word-spacing: 0.3em;"
     >
-      <h1 class="text-5xl font-bold text-white" style="font-family: 'Times New Roman', serif;">
-        WKB Gym
-      </h1>
-      <p 
-        class="mt-4 text-white text-sm md:text-lg font-semibold"
-        style="font-family: 'Times New Roman', serif; letter-spacing: 0.075em; word-spacing: 0.3em;"
-      >
-        Kyokushin Karate / Kickboxing / MMA
-      </p>
-    </div>
-  </section>
+      Kyokushin Karate / Kickboxing / MMA
+    </p>
+  </div>
+</section>
+
 
   <!-- About Section -->
   <section class="bg-[#fdfaf3] text-black py-10">
