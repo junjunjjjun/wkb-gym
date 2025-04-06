@@ -5,6 +5,15 @@ import Layout from '../layouts/Layout.astro';
 <Layout>
   <!-- Hero Section with Parallax Background -->
 <section class="relative h-screen overflow-hidden">
+<!-- Parallax Background -->
+<div 
+  class="absolute inset-0 bg-center bg-cover bg-fixed"
+  style="background-image: url('/photo.jpg');"
+></div>
+
+<!-- Dark Overlay -->
+<div class="absolute inset-0 bg-black/50 z-10"></div>
+
   <!-- Parallax Background -->
  <!-- Hero Text with Parallax-Like Scroll Movement -->
 <div 
