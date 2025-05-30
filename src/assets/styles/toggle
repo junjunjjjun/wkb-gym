@@ -36,6 +36,16 @@
   .btn-tertiary {
     @apply btn border-none shadow-none text-muted hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
   }
+  /* Override the “active” link in ToggleMenu */
+.aw-link-active {
+  @apply text-black font-bold;
+}
+
+/* And make non-active links muted gray */
+[data-aw-toggle-menu] a {
+  @apply text-gray-500 hover:text-black/75;
+}
+
 }
 
 #header.scroll > div:first-child {
