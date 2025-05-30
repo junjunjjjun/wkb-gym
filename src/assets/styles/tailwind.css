@@ -91,9 +91,7 @@
   margin-top: 0;
 }
 
-
 /* ✅ Override mobile menu active link to remove purple and glow */
 .menu-item-active:not(.menu-item-highlighted) {
-  @apply text-black font-bold text-shadow-none;
+  @apply text-black font-bold;
 }
-
